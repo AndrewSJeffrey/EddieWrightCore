@@ -8,9 +8,9 @@
 
        default-autowire="byName" default-autowire-candidates="*">
 
-
-    <context:property-placeholder location='classpath*:/application.properties' ignore-unresolvable='true'/>
-    <import resource="classpath*:hibernate.xml"/>
-    <import resource="classpath*:beans.xml"/>
+    <bean id="applicationFrame" class="com.eddie.ui.ApplicationFrame" init-method="init">
+    </bean>
+    <bean id="loginPanel" class="com.eddie.login.LoginPanel"></bean>
+    <bean id="loginService" class="com.eddie.login.LoginService"></bean>
 
 </beans>
