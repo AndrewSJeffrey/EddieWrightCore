@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/LeadsTableModel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/LiveChat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/domain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/login" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/eddie/ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/application-properties.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/application.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/log4j.properties" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+
+       default-autowire="byName" default-autowire-candidates="*">
+
+
+    <context:property-placeholder location='/application.properties' ignore-unresolvable='true'/>
+    <context:component-scan base-package="com"/>
+
+
+    <bean id='dataSource' class='org.apache.commons.dbcp.BasicDataSource' destroy-method='close'>
+        <property name='driverClassName'>
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name='url'>
+            <value>${db.fleetsmart.url}</value>
+        </property>
+        <property name='username'>
+            <value>${db.fleetsmart.user}</value>
+        </property>
+        <property name='password'>
+            <value>${db.fleetsmart.pwd}</value>
+        </property>
+        <property name='validationQuery' value='SELECT 1'/>
+        <property name='testWhileIdle' value='true'/>
+        <property name='timeBetweenEvictionRunsMillis' value='120000'/>
+        <property name='maxActive' value='20'/>
+        <property name='minIdle' value='2'/>
+        <property name='testOnBorrow' value='false'/>
+        <property name='testOnReturn' value='false'/>
+        <property name='maxWait' value='5000'/>
+        <property name='numTestsPerEvictionRun' value='3'/>
+    </bean>
+
+    <bean id="hibernate3AnnotatedSessionFactory"
+          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.eddie.domain.User</value>
+
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.generate_statistics">false</prop>
+                <prop key="hibernate.use_sql_comments">false</prop>
+                <prop key="hibernate.connection.release_mode">after_statement</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <bean id="applicationFrame" class="com.eddie.ui.ApplicationFrame" init-method="init">
+    </bean>
+    <bean id="loginPanel" class="com.eddie.login.LoginPanel"></bean>
+    <bean id="loginService" class="com.eddie.login.LoginService"></bean>
+
+    <!--DAOS-->
+    <bean id="userDao" class="com.eddie.dao.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+</beans>
