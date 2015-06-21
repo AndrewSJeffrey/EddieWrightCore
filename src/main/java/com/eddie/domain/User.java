@@ -20,6 +20,7 @@ public class User {
     private Date dateModified;
     private String modifiedBy;
     private String role;
+    private String password;
 
     public int getId() {
         return id;
@@ -93,9 +94,16 @@ public class User {
         this.role = role;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
@@ -106,6 +114,7 @@ public class User {
                 ", dateModified=" + dateModified +
                 ", modifiedBy='" + modifiedBy + '\'' +
                 ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
