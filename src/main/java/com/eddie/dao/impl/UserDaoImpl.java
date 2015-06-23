@@ -19,7 +19,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     @Override
     public User save(User user) {
-        getHibernateTemplate().save(user);
+        getHibernateTemplate().saveOrUpdate(user);
         return user;
     }
 

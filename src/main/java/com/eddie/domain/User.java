@@ -21,6 +21,7 @@ public class User {
     private String modifiedBy;
     private String role;
     private String password;
+    private boolean removed;
 
     public Integer getId() {
         return id;
@@ -102,10 +103,19 @@ public class User {
         this.password = password;
     }
 
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "password='" + password + '\'' +
+                ", id=" + id +
                 ", username='" + username + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
@@ -114,7 +124,7 @@ public class User {
                 ", dateModified=" + dateModified +
                 ", modifiedBy='" + modifiedBy + '\'' +
                 ", role='" + role + '\'' +
-                ", password='" + password + '\'' +
+                ", removed=" + removed +
                 '}';
     }
 }
