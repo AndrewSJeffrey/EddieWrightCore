@@ -18,6 +18,7 @@ public class User {
     private String email;
     private Date dateCreated;
     private Date dateModified;
+    private Date dateLastLogin;
     private String modifiedBy;
     private String role;
     private String password;
@@ -111,6 +112,14 @@ public class User {
         this.removed = removed;
     }
 
+    public Date getDateLastLogin() {
+        return dateLastLogin;
+    }
+
+    public void setDateLastLogin(Date dateLastLogin) {
+        this.dateLastLogin = dateLastLogin;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -120,6 +129,7 @@ public class User {
                 ", firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
+                ", dateLastLogin=" + dateLastLogin +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
                 ", modifiedBy='" + modifiedBy + '\'' +
