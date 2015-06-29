@@ -30,7 +30,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     @Override
     public User findByUsername(String username) {
-        Query query = getSessionFactory().openSession().createQuery(
+        Query query = getSessionFactory().getCurrentSession().createQuery(
                 "select U from User U where (U.username = :username)");
         User user = (User) query.setParameter("username", username).setCacheable(true).uniqueResult();
         return user;
@@ -38,7 +38,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     @Override
     public User findByUsernameAndPassword(String username, String password) {
-        Query query = getSessionFactory().openSession().createQuery(
+        Query query = getSessionFactory().getCurrentSession().createQuery(
                 "select U from User U where (U.username = :username and U.password = :password)");
         User user = (User) query
                 .setParameter("username", username)

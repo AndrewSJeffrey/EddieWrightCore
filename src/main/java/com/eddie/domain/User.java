@@ -2,6 +2,7 @@ package com.eddie.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -10,6 +11,7 @@ public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
 
     private String username;
@@ -23,6 +25,9 @@ public class User {
     private String role;
     private String password;
     private boolean removed;
+
+    @OneToMany(mappedBy = "createdBy")
+    private List<Event> events;
 
     public Integer getId() {
         return id;
