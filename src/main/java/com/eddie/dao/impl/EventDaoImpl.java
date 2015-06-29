@@ -19,6 +19,15 @@ public class EventDaoImpl extends HibernateDaoSupport implements EventDao {
         return getHibernateTemplate().loadAll(Event.class);
     }
 
+
+    @Override
+    public List<Event> activeEvents() {
+        Query query = getSessionFactory().getCurrentSession().createQuery(
+                "select E from Event E where (E.removed = :removed)");
+        List<Event> events = (List<Event>) query.setParameter("removed", false).setCacheable(true).list();
+        return events;
+    }
+
     @Override
     public Event save(Event event) {
         getHibernateTemplate().saveOrUpdate(event);
