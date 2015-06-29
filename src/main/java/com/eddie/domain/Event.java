@@ -15,16 +15,17 @@ public class Event {
 
     private String title;
     private String message;
+
     private Date startsAt;
     private Date endsAt;
+    private Date modifiedAt;
+    private Date createdAt;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "createdBy")
     private User createdBy;
 
-
     private Integer ticketID;
-
     private boolean removed;
 
     public Integer getId() {
@@ -91,6 +92,14 @@ public class Event {
         this.removed = removed;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -100,8 +109,18 @@ public class Event {
                 ", startsAt=" + startsAt +
                 ", endsAt=" + endsAt +
                 ", createdBy=" + createdBy +
+                ", createdAt=" + createdAt +
+                ", modifiedAt=" + modifiedAt +
                 ", ticketID=" + ticketID +
                 ", removed=" + removed +
                 '}';
+    }
+
+    public void setModifiedAt(Date modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    public Date getModifiedAt() {
+        return modifiedAt;
     }
 }
