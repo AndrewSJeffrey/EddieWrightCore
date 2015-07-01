@@ -43,6 +43,9 @@
             <list>
                 <value>com.eddie.domain.User</value>
                 <value>com.eddie.domain.Event</value>
+                <value>com.eddie.domain.Contact</value>
+                <value>com.eddie.domain.Source</value>
+                <value>com.eddie.domain.Opportunity</value>
 
             </list>
         </property>
@@ -83,6 +86,20 @@
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 
+    <!--DAOS-->
+    <bean id="customerDao" class="com.eddie.dao.impl.ContactDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
+    <!--DAOS-->
+    <bean id="opportunityDao" class="com.eddie.dao.impl.OpportunityDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
+    <!--DAOS-->
+    <bean id="sourceDao" class="com.eddie.dao.impl.SourceDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
 
 
 </beans>
