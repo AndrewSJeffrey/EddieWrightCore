@@ -10,4 +10,8 @@ public interface ContactDao {
     public Contact save(Contact user);
     public void delete(Contact user);
 
+    public int count();
+
+    public List<Contact> search(String search);
+    public List<Contact> searchFirstName(String search);
 }

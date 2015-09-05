@@ -46,12 +46,13 @@
                 <value>com.eddie.domain.Contact</value>
                 <value>com.eddie.domain.Source</value>
                 <value>com.eddie.domain.Opportunity</value>
+                <value>com.eddie.domain.EmailMessage</value>
 
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.generate_statistics">false</prop>
                 <prop key="hibernate.use_sql_comments">false</prop>
@@ -93,6 +94,11 @@
 
     <!--DAOS-->
     <bean id="opportunityDao" class="com.eddie.dao.impl.OpportunityDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
+    <!--DAOS-->
+    <bean id="emailMessageDao" class="com.eddie.dao.impl.EmailMessageDaoImpl">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 
