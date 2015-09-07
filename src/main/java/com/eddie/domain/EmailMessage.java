@@ -28,6 +28,10 @@ public class EmailMessage {
     private Date processedDate;
     private boolean processed;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "assignedContact")
+    private Contact assignedContact;
+
     public int getId() {
         return id;
     }
@@ -127,6 +131,15 @@ public class EmailMessage {
         this.parsedDate = parsedDate;
     }
 
+
+    public Contact getAssignedContact() {
+        return assignedContact;
+    }
+
+    public void setAssignedContact(Contact assignedContact) {
+        this.assignedContact = assignedContact;
+    }
+
     @Override
     public String toString() {
         return "EmailMessage{" +
@@ -142,6 +155,7 @@ public class EmailMessage {
                 ", parsedDate=" + parsedDate +
                 ", processedDate=" + processedDate +
                 ", processed=" + processed +
+                ", assignedContact=" + assignedContact +
                 '}';
     }
 }
