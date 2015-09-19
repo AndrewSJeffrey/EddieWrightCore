@@ -3,7 +3,6 @@ package com.eddie.dao.impl;
 
 import com.eddie.dao.ContactDao;
 import com.eddie.domain.Contact;
-import com.sun.javafx.fxml.expression.Expression;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.*;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
