@@ -47,6 +47,7 @@
                 <value>com.eddie.domain.Source</value>
                 <value>com.eddie.domain.Opportunity</value>
                 <value>com.eddie.domain.EmailMessage</value>
+                <value>com.eddie.domain.Action</value>
 
             </list>
         </property>
@@ -104,6 +105,11 @@
 
     <!--DAOS-->
     <bean id="sourceDao" class="com.eddie.dao.impl.SourceDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
+    <!--DAOS-->
+    <bean id="actionDao" class="com.eddie.dao.impl.ActionDaoImpl">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 
