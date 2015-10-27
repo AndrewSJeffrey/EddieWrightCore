@@ -27,6 +27,9 @@ public class EmailMessage {
     private Date parsedDate;
     private Date processedDate;
     private boolean processed;
+    private boolean discarded;
+
+    private Integer processedBy;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "assignedContact")
@@ -140,6 +143,14 @@ public class EmailMessage {
         this.assignedContact = assignedContact;
     }
 
+    public Integer getProcessedBy() {
+        return processedBy;
+    }
+
+    public void setProcessedBy(Integer processedBy) {
+        this.processedBy = processedBy;
+    }
+
     @Override
     public String toString() {
         return "EmailMessage{" +
@@ -155,8 +166,18 @@ public class EmailMessage {
                 ", parsedDate=" + parsedDate +
                 ", processedDate=" + processedDate +
                 ", processed=" + processed +
+                ", discarded=" + discarded +
+                ", processedBy=" + processedBy +
                 ", assignedContact=" + assignedContact +
                 '}';
+    }
+
+    public boolean isDiscarded() {
+        return discarded;
+    }
+
+    public void setDiscarded(boolean discarded) {
+        this.discarded = discarded;
     }
 }
 

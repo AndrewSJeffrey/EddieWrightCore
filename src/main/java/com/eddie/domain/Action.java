@@ -14,14 +14,14 @@ public class Action {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "createdBy")
-    private User createdBy;
+   // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   // @JoinColumn(name = "createdBy")
+    private Integer createdBy;
 
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "assignedTo")
-    private User assignedTo;
+   // @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   // @JoinColumn(name = "assignedTo")
+    private Integer assignedTo;
 
 
     private Date createdOn;
@@ -31,19 +31,15 @@ public class Action {
     private String note;
     private String outcome;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "previousAction")
-    private Action previousAction;
+    private Integer previousAction;
+    private Integer nextAction;
 
+    @Transient
+    private Integer contactId;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "nextAction")
-    private Action nextAction;
+    @Transient
+    private Integer messageId;
 
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "contact")
-    private Contact contact;
 
 
     public Integer getId() {
@@ -54,19 +50,19 @@ public class Action {
         this.id = id;
     }
 
-    public User getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
 
-    public User getAssignedTo() {
+    public Integer getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedTo(User assignedTo) {
+    public void setAssignedTo(Integer assignedTo) {
         this.assignedTo = assignedTo;
     }
 
@@ -98,32 +94,6 @@ public class Action {
         return reason;
     }
 
-    @Override
-    public String toString() {
-        return "Action{" +
-                "id=" + id +
-                ", createdBy=" + createdBy +
-                ", assignedTo=" + assignedTo +
-                ", createdOn=" + createdOn +
-                ", actionRequiredBy=" + actionRequiredBy +
-                ", type='" + type + '\'' +
-                ", reason='" + reason + '\'' +
-                ", note='" + note + '\'' +
-                ", outcome='" + outcome + '\'' +
-                ", previousAction=" + previousAction +
-                ", nextAction=" + nextAction +
-                ", contact=" + contact +
-                '}';
-    }
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
     public void setReason(String reason) {
         this.reason = reason;
     }
@@ -144,20 +114,54 @@ public class Action {
         this.outcome = outcome;
     }
 
-    public Action getPreviousAction() {
+    public Integer getPreviousAction() {
         return previousAction;
     }
 
-    public void setPreviousAction(Action previousAction) {
+    public void setPreviousAction(Integer previousAction) {
         this.previousAction = previousAction;
     }
 
-    public Action getNextAction() {
+    public Integer getNextAction() {
         return nextAction;
     }
 
-    public void setNextAction(Action nextAction) {
+    public void setNextAction(Integer nextAction) {
         this.nextAction = nextAction;
     }
 
+    public Integer getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(Integer contactId) {
+        this.contactId = contactId;
+    }
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
+    }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "id=" + id +
+                ", createdBy=" + createdBy +
+                ", assignedTo=" + assignedTo +
+                ", createdOn=" + createdOn +
+                ", actionRequiredBy=" + actionRequiredBy +
+                ", type='" + type + '\'' +
+                ", reason='" + reason + '\'' +
+                ", note='" + note + '\'' +
+                ", outcome='" + outcome + '\'' +
+                ", previousAction=" + previousAction +
+                ", nextAction=" + nextAction +
+                ", contactId=" + contactId +
+                ", messageId=" + messageId +
+                '}';
+    }
 }

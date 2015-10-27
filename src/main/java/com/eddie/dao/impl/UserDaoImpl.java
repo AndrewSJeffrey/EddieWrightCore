@@ -24,6 +24,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     }
 
     @Override
+    public User load(int id) {
+        return getHibernateTemplate().load(User.class, id);
+    }
+
+    @Override
     public void delete(User user) {
         getHibernateTemplate().delete(user);
     }

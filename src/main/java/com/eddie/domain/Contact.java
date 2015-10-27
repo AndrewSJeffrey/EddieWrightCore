@@ -30,6 +30,10 @@ public class Contact {
     private boolean removed;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "currentAction")
+    private Action currentAction;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "createdBy")
     private User createdBy;
 
@@ -184,7 +188,7 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Contact{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +
@@ -200,9 +204,19 @@ public class Contact {
                 ", completeContact=" + completeContact +
                 ", createdOn=" + createdOn +
                 ", modifiedOn=" + modifiedOn +
+                ", removed=" + removed +
+                ", currentAction=" + currentAction +
                 ", createdBy=" + createdBy +
                 ", modifiedBy=" + modifiedBy +
-                ", removed=" + removed +
                 '}';
     }
+
+    public Action getCurrentAction() {
+        return currentAction;
+    }
+
+    public void setCurrentAction(Action currentAction) {
+        this.currentAction = currentAction;
+    }
+
 }

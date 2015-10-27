@@ -27,6 +27,11 @@ public class ContactDaoImpl extends HibernateDaoSupport implements ContactDao {
     }
 
     @Override
+    public Contact load(int id) {
+        return getHibernateTemplate().load(Contact.class, id);
+    }
+
+    @Override
     public void delete(Contact contact) {
         getHibernateTemplate().delete(contact);
     }
