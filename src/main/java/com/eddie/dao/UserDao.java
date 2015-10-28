@@ -12,4 +12,7 @@ public interface UserDao {
     public User findByUsername(String username);
     public User findByUsernameAndPassword(String username, String password);
     public User load(int id);
+
+
+    public List<User> findByRole(String role);
 }

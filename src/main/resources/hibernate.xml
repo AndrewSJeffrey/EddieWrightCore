@@ -48,6 +48,7 @@
                 <value>com.eddie.domain.Opportunity</value>
                 <value>com.eddie.domain.EmailMessage</value>
                 <value>com.eddie.domain.Action</value>
+                <value>com.eddie.domain.UserRole</value>
 
             </list>
         </property>
@@ -59,7 +60,9 @@
                 <prop key="hibernate.use_sql_comments">false</prop>
                 <prop key="hibernate.connection.release_mode">after_statement</prop>
             </props>
+
         </property>
+
     </bean>
 
     <bean id='hibernateInterceptor' class='org.springframework.orm.hibernate3.HibernateInterceptor'>
@@ -110,6 +113,10 @@
 
     <!--DAOS-->
     <bean id="actionDao" class="com.eddie.dao.impl.ActionDaoImpl">
+        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="userRoleDao" class="com.eddie.dao.impl.UserRoleDaoImpl">
         <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory"/>
     </bean>
 

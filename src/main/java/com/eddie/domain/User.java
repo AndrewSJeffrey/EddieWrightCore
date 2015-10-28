@@ -2,7 +2,9 @@ package com.eddie.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -26,8 +28,15 @@ public class User {
     private String password;
     private boolean removed;
 
-    @OneToMany(mappedBy = "createdBy")
-    private List<Event> events;
+    public User() {
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<UserRole> userRoles = new HashSet<UserRole>();
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
 
     public Integer getId() {
         return id;
@@ -125,21 +134,26 @@ public class User {
         this.dateLastLogin = dateLastLogin;
     }
 
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "password='" + password + '\'' +
-                ", id=" + id +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
-                ", dateLastLogin=" + dateLastLogin +
                 ", dateCreated=" + dateCreated +
                 ", dateModified=" + dateModified +
+                ", dateLastLogin=" + dateLastLogin +
                 ", modifiedBy='" + modifiedBy + '\'' +
                 ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
                 ", removed=" + removed +
+                ", userRoles=" + userRoles +
                 '}';
     }
 }

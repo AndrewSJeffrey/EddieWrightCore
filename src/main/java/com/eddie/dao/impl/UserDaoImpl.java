@@ -1,17 +1,17 @@
 package com.eddie.dao.impl;
 
 
+
 import com.eddie.dao.UserDao;
 import com.eddie.domain.User;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.util.List;
-
+@SuppressWarnings("unchecked")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 
-    @SuppressWarnings("unchecked")
     @Override
     public List<User> list() {
         return getHibernateTemplate().loadAll(User.class);
@@ -25,7 +25,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     @Override
     public User load(int id) {
-        return getHibernateTemplate().load(User.class, id);
+        return getHibernateTemplate().get(User.class, id);
     }
 
     @Override
@@ -50,5 +50,15 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
                 .setParameter("password", password)
                 .setCacheable(true).uniqueResult();
         return user;
+    }
+
+
+    @Override
+    public List<User> findByRole(String role) {
+        Query query = getSessionFactory().getCurrentSession().createQuery(
+                "Select U from User U, UserRole ur where ur.user = U.id and ur.role = :role and U.removed = false");
+
+        return  (List<User>)query
+                .setParameter("role", role).list();
     }
 }
