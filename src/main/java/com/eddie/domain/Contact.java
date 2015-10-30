@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "contacts")
-public class Contact {
+public class    Contact {
 
     @Id
     @Column(name = "id")
@@ -219,4 +219,14 @@ public class Contact {
         this.currentAction = currentAction;
     }
 
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Contact) && ((Contact) obj).id == id;
+    }
 }

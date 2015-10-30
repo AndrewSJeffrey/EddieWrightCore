@@ -34,7 +34,6 @@ public class Action {
     private Integer previousAction;
     private Integer nextAction;
 
-    @Transient
     private Integer contactId;
 
     @Transient
